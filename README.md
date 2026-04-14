@@ -1,114 +1,142 @@
-AI Customer Support Automation
+# AI Customer Support Automation
 
-Overview
+## Overview
 
-This project is an AI-powered customer support automation system that answers user queries using PDF documents and FAQs. It uses a Retrieval-Augmented Generation (RAG) approach to deliver accurate, context-aware, and reliable responses.
-
----
-
-Features
-
-- Automates customer query handling
-- Answers questions from PDF documents
-- Supports FAQ-based queries
-- Provides context-aware responses
-- Applies strict filtering to reduce hallucinations
-- Displays answer sources (PDF / FAQ)
-- Interactive user interface using Streamlit
+This project is an AI-powered customer support automation system that answers user queries using PDF documents and FAQs. It uses a Retrieval-Augmented Generation (RAG) approach to provide accurate and context-aware responses.
 
 ---
 
-Tech Stack
+## Features
 
-- Backend: FastAPI
-- Frontend: Streamlit
-- LLM: Ollama (TinyLLaMA)
-- Embeddings: Sentence Transformers
-- Vector Database: FAISS
-- Framework: LangChain
+* Automates customer query handling
+* Answers questions from PDF documents
+* Supports FAQ-based queries
+* Provides context-aware responses
+* Reduces hallucinations using strict filtering
+* Displays answer sources (PDF / FAQ)
+* Interactive user interface using Streamlit
 
 ---
 
-Project Structure
+## Screenshots
 
+### User Interface
+
+![UI](screenshots/ui.png)
+
+### Chat Response
+
+![Chat](screenshots/chat.png)
+
+---
+
+## Tech Stack
+
+* Backend: FastAPI
+* Frontend: Streamlit
+* LLM: Ollama (TinyLLaMA)
+* Embeddings: Sentence Transformers
+* Vector Database: FAISS
+* Framework: LangChain
+
+---
+
+## Project Structure
+
+```
 ai-customer-support-automation/
+│── screenshots/
+│   ├── ui.png
+│   ├── chat.png
+│
+│── data/
+│   ├── sample.pdf
+│   ├── faqs.txt
+│
 │── main.py
 │── chatbot.py
 │── vector_store.py
 │── ui.py
-│── data/
-│   ├── sample.pdf
-│   ├── faqs.txt
+│
 │── requirements.txt
 │── README.md
 │── .gitignore
+```
 
 ---
 
-How to Run the Project
+## How to Run
 
-1. Install Dependencies
+### Install Dependencies
 
+```
 pip install -r requirements.txt
+```
 
-2. Create Vector Database
+### Create Vector Store
 
+```
 python vector_store.py
+```
 
-3. Start Backend Server
+### Run Backend
 
+```
 uvicorn main:app --reload
+```
 
-4. Run Frontend UI
+### Run Frontend
 
+```
 streamlit run ui.py
+```
 
 ---
 
-Ollama Setup
+## Ollama Setup
 
-This project uses a local large language model through Ollama.
+1. Install Ollama: https://ollama.com
+2. Run:
 
-1. Install Ollama from: https://ollama.com
-2. Run the model:
-   ollama run tinyllama
-
-Make sure Ollama is running before starting the chatbot.
-
----
-
-API Endpoints
-
-- GET / → API status
-- GET /health → Health check
-- POST /chat → Submit user query and get response
+```
+ollama run tinyllama
+```
 
 ---
 
-How It Works
+## API Endpoints
+
+* GET / → API status
+* GET /health → Health check
+* POST /chat → Get chatbot response
+
+---
+
+## How It Works
 
 1. Loads data from PDF and FAQ files
-2. Splits the content into smaller chunks
-3. Converts text into embeddings
-4. Stores embeddings in FAISS vector database
-5. Retrieves relevant context based on user query
-6. Sends context and query to the language model
-7. Returns a concise and relevant answer
+2. Converts text into embeddings
+3. Stores embeddings in FAISS
+4. Retrieves relevant context
+5. Sends context to the language model
+6. Returns an accurate response
 
 ---
 
-Important Notes
+## Important Notes
 
-- Do not upload "faiss_index/" to GitHub
-- Ensure Ollama is running locally
-- Run "vector_store.py" before starting the backend
+* Do not upload `faiss_index/`
+* Ensure Ollama is running
+* Run `vector_store.py` before backend
 
 ---
 
-Future Improvements
+## Future Improvements
 
-- Add chat history memory
-- Improve UI design
-- Support multiple documents
-- Deploy using cloud platforms
+* Add chat history memory
+* Improve UI design
+* Support multiple documents
+* Deploy on cloud platforms
+
+---
 
